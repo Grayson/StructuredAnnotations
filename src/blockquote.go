@@ -1,9 +1,9 @@
 package structuredannotations
 
 type BlockQuote struct {
-	text InlineStyle
+	Text InlineStyle
 }
 
 func (q *BlockQuote) Markdown() string {
-	return prependToLines("> ", q.text.Markdown())
+	return prependToLines("> ", q.Text.Markdown())
 }

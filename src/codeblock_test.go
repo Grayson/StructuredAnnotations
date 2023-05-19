@@ -25,7 +25,7 @@ func TestCodeBlock_Markdown(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := &CodeBlock{
-				text: tt.fields.text,
+				Text: tt.fields.text,
 			}
 			if got := c.Markdown(); got != tt.want {
 				t.Errorf("CodeBlock.Markdown() = |%v|, want |%v|", got, tt.want)

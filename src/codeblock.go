@@ -6,11 +6,11 @@ import (
 )
 
 type CodeBlock struct {
-	text string
+	Text string
 }
 
 func (c *CodeBlock) Markdown() string {
-	return prependToLines("    ", c.text)
+	return prependToLines("    ", c.Text)
 }
 
 func prependToLines(prepend string, input string) string {

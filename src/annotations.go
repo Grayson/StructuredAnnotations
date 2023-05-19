@@ -27,13 +27,13 @@ func NewAnnotation(configurations ...AnnotationConfiguration) *Annotation {
 
 // Annotation configurations
 
-func withContext(ctx string) AnnotationConfiguration {
+func WithContext(ctx string) AnnotationConfiguration {
 	return func(a *Annotation) {
 		a.context = ctx
 	}
 }
 
-func withStyle(style AnnotationStyle) AnnotationConfiguration {
+func WithStyle(style AnnotationStyle) AnnotationConfiguration {
 	return func(a *Annotation) {
 		a.style = style
 	}

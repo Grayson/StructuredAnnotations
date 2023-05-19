@@ -3,12 +3,12 @@ package structuredannotations
 import "fmt"
 
 type Link struct {
-	text        InlineStyle
-	destination string
+	Text        InlineStyle
+	Destination string
 }
 
 func (l *Link) Markdown() string {
-	return fmt.Sprintf("[%v](%v)", l.text.Markdown(), l.destination)
+	return fmt.Sprintf("[%v](%v)", l.Text.Markdown(), l.Destination)
 }
 
 func (Link) canInline() {}

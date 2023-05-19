@@ -3,11 +3,11 @@ package structuredannotations
 import "fmt"
 
 type Image struct {
-	source      string
-	title       string
-	description string
+	Source      string
+	Title       string
+	Description string
 }
 
 func (i *Image) Markdown() string {
-	return fmt.Sprintf("![%v](%v %v)", i.source, i.title, i.description)
+	return fmt.Sprintf("![%v](%v %v)", i.Source, i.Title, i.Description)
 }

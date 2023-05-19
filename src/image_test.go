@@ -26,9 +26,9 @@ func TestImage_Markdown(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			i := &Image{
-				source:      tt.fields.source,
-				title:       tt.fields.title,
-				description: tt.fields.description,
+				Source:      tt.fields.source,
+				Title:       tt.fields.title,
+				Description: tt.fields.description,
 			}
 			if got := i.Markdown(); got != tt.want {
 				t.Errorf("Image.Markdown() = %v, want %v", got, tt.want)

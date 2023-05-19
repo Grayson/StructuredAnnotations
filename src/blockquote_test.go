@@ -25,7 +25,7 @@ func TestBlockQuote_Markdown(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			q := &BlockQuote{
-				text: Text(tt.fields.text),
+				Text: Text(tt.fields.text),
 			}
 			if got := q.Markdown(); got != tt.want {
 				t.Errorf("BlockQuote.Markdown() = %v, want %v", got, tt.want)

@@ -83,7 +83,7 @@ func TestNewAnnotation(t *testing.T) {
 		},
 		{
 			"New annotation with context",
-			[]AnnotationConfiguration{withContext("test")},
+			[]AnnotationConfiguration{WithContext("test")},
 			&Annotation{
 				context: "test",
 				styles:  []ConvertableToMarkdown{},
@@ -92,7 +92,7 @@ func TestNewAnnotation(t *testing.T) {
 		},
 		{
 			"New annotation with style",
-			[]AnnotationConfiguration{withStyle(Info)},
+			[]AnnotationConfiguration{WithStyle(Info)},
 			&Annotation{
 				context: "",
 				styles:  []ConvertableToMarkdown{},
@@ -102,8 +102,8 @@ func TestNewAnnotation(t *testing.T) {
 		{
 			"New annotation with context and style",
 			[]AnnotationConfiguration{
-				withContext("test"),
-				withStyle(Info),
+				WithContext("test"),
+				WithStyle(Info),
 			},
 			&Annotation{
 				context: "test",
