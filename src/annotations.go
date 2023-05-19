@@ -45,13 +45,13 @@ func (a *Annotation) Add(styles ...ConvertableToMarkdown) {
 	a.styles = append(a.styles, styles...)
 }
 
-func (a *Annotation) Send() {
+func (a *Annotation) Send() error {
 	annotation := service.Annotation{
 		Context:  a.context,
 		Markdown: a.Markdown(),
 		Style:    a.style.String(),
 	}
-	service.Annotate(annotation)
+	return service.Annotate(annotation)
 }
 
 func (a *Annotation) Markdown() string {
