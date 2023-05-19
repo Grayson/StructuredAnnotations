@@ -3,6 +3,8 @@ package structuredannotations
 import (
 	"fmt"
 	"strings"
+
+	"github.com/bitrise-io/bitrise-plugins-annotations/service"
 )
 
 type Annotation struct {
@@ -37,11 +39,19 @@ func withStyle(style AnnotationStyle) AnnotationConfiguration {
 	}
 }
 
-func (a *Annotations) Add(styles ...ConvertableToMarkdown) {
 // Annotation methods
 
 func (a *Annotation) Add(styles ...ConvertableToMarkdown) {
 	a.styles = append(a.styles, styles...)
+}
+
+func (a *Annotation) Send() {
+	annotation := service.Annotation{
+		Context:  a.context,
+		Markdown: a.Markdown(),
+		Style:    a.style.String(),
+	}
+	service.Annotate(annotation)
 }
 
 func (a *Annotation) Markdown() string {
