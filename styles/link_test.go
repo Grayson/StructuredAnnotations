@@ -15,7 +15,7 @@ func TestLink_ConvertableToMarkdown(t *testing.T) {
 		{
 			"Link test",
 			&Link{
-				"test",
+				Text("test"),
 				"dest",
 			},
 			"[test](dest)",
@@ -23,7 +23,7 @@ func TestLink_ConvertableToMarkdown(t *testing.T) {
 		{
 			"Link test",
 			&Heading{
-				&Link{"test", "dest"},
+				&Link{Text("test"), "dest"},
 				H1,
 			},
 			"# [test](dest)",
