@@ -17,10 +17,10 @@ const (
 )
 
 type Heading struct {
-	text  string
+	text  InlineStyle
 	level HeadingLevel
 }
 
 func (h *Heading) Markdown() string {
-	return fmt.Sprintf("%v %v", strings.Repeat("#", int(h.level)+1), h.text)
+	return fmt.Sprintf("%v %v", strings.Repeat("#", int(h.level)+1), h.text.Markdown())
 }
