@@ -32,7 +32,7 @@ func TestHeading_Markdown(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			h := &Heading{
-				text:  tt.fields.text,
+				text:  Text(tt.fields.text),
 				level: tt.fields.level,
 			}
 			if got := h.Markdown(); got != tt.want {

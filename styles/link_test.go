@@ -8,27 +8,32 @@ func TestLink_ConvertableToMarkdown(t *testing.T) {
 		destination string
 	}
 	tests := []struct {
-		name   string
-		fields fields
-		want   string
+		name  string
+		style ConvertableToMarkdown
+		want  string
 	}{
 		{
 			"Link test",
-			fields{
+			&Link{
 				"test",
 				"dest",
 			},
 			"[test](dest)",
 		},
+		{
+			"Link test",
+			&Heading{
+				&Link{"test", "dest"},
+				H1,
+			},
+			"# [test](dest)",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			l := &Link{
-				text:        tt.fields.text,
-				destination: tt.fields.destination,
-			}
-			if got := l.ConvertableToMarkdown(); got != tt.want {
-				t.Errorf("Link.ConvertableToMarkdown() = %v, want %v", got, tt.want)
+			l := tt.style
+			if got := l.Markdown(); got != tt.want {
+				t.Errorf("Link.Markdown() = %v, want %v", got, tt.want)
 			}
 		})
 	}

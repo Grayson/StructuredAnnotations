@@ -7,6 +7,8 @@ type Link struct {
 	destination string
 }
 
-func (l *Link) ConvertableToMarkdown() string {
+func (l *Link) Markdown() string {
 	return fmt.Sprintf("[%v](%v)", l.text, l.destination)
 }
+
+func (Link) canInline() {}

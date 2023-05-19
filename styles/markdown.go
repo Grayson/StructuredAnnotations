@@ -15,8 +15,8 @@ type InlineStyle interface {
 
 type Text string
 
-func (Text) canInline() {}
-
-func (t Text) ConvertableToMarkdown() string {
+func (t Text) Markdown() string {
 	return string(t)
 }
+
+func (t Text) canInline() {}
