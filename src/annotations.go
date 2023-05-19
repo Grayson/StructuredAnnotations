@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/bitrise-io/bitrise-plugins-annotations/service"
+	"github.com/google/uuid"
 )
 
 type Annotation struct {
@@ -30,6 +31,12 @@ func NewAnnotation(configurations ...AnnotationConfiguration) *Annotation {
 func WithContext(ctx string) AnnotationConfiguration {
 	return func(a *Annotation) {
 		a.context = ctx
+	}
+}
+
+func withUniqueContext() AnnotationConfiguration {
+	return func(a *Annotation) {
+		a.context = uuid.New().String()
 	}
 }
 

@@ -120,3 +120,25 @@ func TestNewAnnotation(t *testing.T) {
 		})
 	}
 }
+
+func Test_withUniqueContext(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		{
+			"Test uniqueness of Annotations",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+
+			l, r := Annotation{}, Annotation{}
+			withUniqueContext()(&l)
+			withUniqueContext()(&r)
+
+			if l.context == r.context {
+				t.Errorf("withUniqueContext() failed (%v == %v)", l.context, r.context)
+			}
+		})
+	}
+}
