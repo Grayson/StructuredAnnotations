@@ -8,9 +8,9 @@ import (
 )
 
 type Annotation struct {
-	styles  []ConvertableToMarkdown
-	context string
-	style   AnnotationStyle
+	elements []Markdown
+	context  string
+	style    AnnotationStyle
 }
 
 type AnnotationConfiguration func(*Annotation)
@@ -41,8 +41,8 @@ func WithStyle(style AnnotationStyle) AnnotationConfiguration {
 
 // Annotation methods
 
-func (a *Annotation) Add(styles ...ConvertableToMarkdown) {
-	a.styles = append(a.styles, styles...)
+func (a *Annotation) Add(styles ...Markdown) {
+	a.elements = append(a.elements, styles...)
 }
 
 func (a *Annotation) Send() error {
@@ -57,7 +57,7 @@ func (a *Annotation) Send() error {
 func (a *Annotation) Markdown() string {
 	var sb strings.Builder
 
-	for _, style := range a.styles {
+	for _, style := range a.elements {
 		fmt.Fprint(&sb, style.Markdown())
 		fmt.Fprint(&sb, "\n\n")
 	}

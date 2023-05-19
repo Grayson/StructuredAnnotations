@@ -9,7 +9,7 @@ func TestLink_Markdown(t *testing.T) {
 	}
 	tests := []struct {
 		name  string
-		style ConvertableToMarkdown
+		style Markdown
 		want  string
 	}{
 		{

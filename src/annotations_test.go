@@ -7,20 +7,20 @@ import (
 func TestAnnotations_Add(t *testing.T) {
 	tests := []struct {
 		name          string
-		initialStyles []ConvertableToMarkdown
-		args          []ConvertableToMarkdown
+		initialStyles []Markdown
+		args          []Markdown
 	}{
 		{
 			"Annotation Add one",
-			[]ConvertableToMarkdown{},
-			[]ConvertableToMarkdown{
+			[]Markdown{},
+			[]Markdown{
 				Text("test"),
 			},
 		},
 		{
 			"Annotation Add multiple",
-			[]ConvertableToMarkdown{},
-			[]ConvertableToMarkdown{
+			[]Markdown{},
+			[]Markdown{
 				Text("test"),
 				Text("test"),
 			},
@@ -29,10 +29,10 @@ func TestAnnotations_Add(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := &Annotation{
-				styles: tt.initialStyles,
+				elements: tt.initialStyles,
 			}
 			a.Add(tt.args...)
-			if len(a.styles) != len(tt.args) {
+			if len(a.elements) != len(tt.args) {
 				t.Error("Unmatched number of styles!")
 			}
 		})
@@ -42,12 +42,12 @@ func TestAnnotations_Add(t *testing.T) {
 func TestAnnotations_Markdown(t *testing.T) {
 	tests := []struct {
 		name   string
-		styles []ConvertableToMarkdown
+		styles []Markdown
 		want   string
 	}{
 		{
 			"Annotations Basic Markdown",
-			[]ConvertableToMarkdown{
+			[]Markdown{
 				Text("test"),
 				CreateParagraph(Text("test2"), Emphasis{Text("test3")}),
 			},
@@ -57,7 +57,7 @@ func TestAnnotations_Markdown(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := &Annotation{
-				styles: tt.styles,
+				elements: tt.styles,
 			}
 			if got := a.Markdown(); got != tt.want {
 				t.Errorf("Annotations.Markdown() = %v, want %v", got, tt.want)
@@ -76,27 +76,27 @@ func TestNewAnnotation(t *testing.T) {
 			"New empty annotation",
 			nil,
 			&Annotation{
-				context: "",
-				styles:  []ConvertableToMarkdown{},
-				style:   Default,
+				context:  "",
+				elements: []Markdown{},
+				style:    Default,
 			},
 		},
 		{
 			"New annotation with context",
 			[]AnnotationConfiguration{WithContext("test")},
 			&Annotation{
-				context: "test",
-				styles:  []ConvertableToMarkdown{},
-				style:   Default,
+				context:  "test",
+				elements: []Markdown{},
+				style:    Default,
 			},
 		},
 		{
 			"New annotation with style",
 			[]AnnotationConfiguration{WithStyle(Info)},
 			&Annotation{
-				context: "",
-				styles:  []ConvertableToMarkdown{},
-				style:   Info,
+				context:  "",
+				elements: []Markdown{},
+				style:    Info,
 			},
 		},
 		{
@@ -106,9 +106,9 @@ func TestNewAnnotation(t *testing.T) {
 				WithStyle(Info),
 			},
 			&Annotation{
-				context: "test",
-				styles:  []ConvertableToMarkdown{},
-				style:   Info,
+				context:  "test",
+				elements: []Markdown{},
+				style:    Info,
 			},
 		},
 	}

@@ -1,6 +1,6 @@
 package structuredannotations
 
-type ConvertableToMarkdown interface {
+type Markdown interface {
 	Markdown() string
 }
 
@@ -9,7 +9,7 @@ type Inlineable interface {
 }
 
 type InlineStyle interface {
-	ConvertableToMarkdown
+	Markdown
 	Inlineable
 }
 
