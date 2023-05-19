@@ -10,11 +10,15 @@ type CodeBlock struct {
 }
 
 func (c *CodeBlock) ConvertableToMarkdown() string {
-	lines := strings.FieldsFunc(c.text, func(r rune) bool { return r == '\n' })
+	return prependToLines("    ", c.text)
+}
+
+func prependToLines(prepend string, input string) string {
+	lines := strings.FieldsFunc(input, func(r rune) bool { return r == '\n' })
 	var builder strings.Builder
 
 	for _, line := range lines {
-		fmt.Fprintf(&builder, "    %v\n", line)
+		fmt.Fprintf(&builder, "%v%v\n", prepend, line)
 	}
 
 	return strings.Trim(builder.String(), "\n")
