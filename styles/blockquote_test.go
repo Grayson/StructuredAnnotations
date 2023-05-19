@@ -2,7 +2,7 @@ package structuredannotations
 
 import "testing"
 
-func TestBlockQuote_ConvertableToMarkdown(t *testing.T) {
+func TestBlockQuote_Markdown(t *testing.T) {
 	type fields struct {
 		text string
 	}
@@ -27,8 +27,8 @@ func TestBlockQuote_ConvertableToMarkdown(t *testing.T) {
 			q := &BlockQuote{
 				text: Text(tt.fields.text),
 			}
-			if got := q.ConvertableToMarkdown(); got != tt.want {
-				t.Errorf("BlockQuote.ConvertableToMarkdown() = %v, want %v", got, tt.want)
+			if got := q.Markdown(); got != tt.want {
+				t.Errorf("BlockQuote.Markdown() = %v, want %v", got, tt.want)
 			}
 		})
 	}

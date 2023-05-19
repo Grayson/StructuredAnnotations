@@ -2,7 +2,7 @@ package structuredannotations
 
 import "testing"
 
-func TestLink_ConvertableToMarkdown(t *testing.T) {
+func TestLink_Markdown(t *testing.T) {
 	type fields struct {
 		text        string
 		destination string

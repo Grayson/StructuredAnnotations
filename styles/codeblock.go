@@ -9,7 +9,7 @@ type CodeBlock struct {
 	text string
 }
 
-func (c *CodeBlock) ConvertableToMarkdown() string {
+func (c *CodeBlock) Markdown() string {
 	return prependToLines("    ", c.text)
 }
 
