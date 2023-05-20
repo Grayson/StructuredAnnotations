@@ -4,6 +4,12 @@ type Swappable struct {
 	inner Markdown
 }
 
+func CreateSwappable(initial Markdown) *Swappable {
+	return &Swappable{
+		initial,
+	}
+}
+
 func (s *Swappable) Swap(other Markdown) {
 	s.inner = other
 }
