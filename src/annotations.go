@@ -34,7 +34,7 @@ func WithContext(ctx string) AnnotationConfiguration {
 	}
 }
 
-func withUniqueContext() AnnotationConfiguration {
+func WithUniqueContext() AnnotationConfiguration {
 	return func(a *Annotation) {
 		a.context = uuid.New().String()
 	}

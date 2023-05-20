@@ -133,8 +133,8 @@ func Test_withUniqueContext(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 
 			l, r := Annotation{}, Annotation{}
-			withUniqueContext()(&l)
-			withUniqueContext()(&r)
+			WithUniqueContext()(&l)
+			WithUniqueContext()(&r)
 
 			if l.context == r.context {
 				t.Errorf("withUniqueContext() failed (%v == %v)", l.context, r.context)
