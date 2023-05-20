@@ -6,14 +6,14 @@ import (
 )
 
 type OrderedList struct {
-	lines []InlineStyle
+	lines []Markdown
 }
 
-func CreateOrderedList(lines ...InlineStyle) *OrderedList {
+func CreateOrderedList(lines ...Markdown) *OrderedList {
 	return &OrderedList{lines}
 }
 
-func (l *OrderedList) Add(line InlineStyle) {
+func (l *OrderedList) Add(line Markdown) {
 	l.lines = append(l.lines, line)
 }
 

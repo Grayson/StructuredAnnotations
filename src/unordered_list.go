@@ -6,14 +6,14 @@ import (
 )
 
 type UnorderedList struct {
-	lines []InlineStyle
+	lines []Markdown
 }
 
-func CreateUnorderedList(lines ...InlineStyle) *UnorderedList {
+func CreateUnorderedList(lines ...Markdown) *UnorderedList {
 	return &UnorderedList{lines}
 }
 
-func (l *UnorderedList) Add(line InlineStyle) {
+func (l *UnorderedList) Add(line Markdown) {
 	l.lines = append(l.lines, line)
 }
 

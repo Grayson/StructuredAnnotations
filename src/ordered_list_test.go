@@ -5,17 +5,17 @@ import "testing"
 func TestOrderedList_Markdown(t *testing.T) {
 	tests := []struct {
 		name  string
-		lines []InlineStyle
+		lines []Markdown
 		want  string
 	}{
 		{
 			"OrderedList single item",
-			[]InlineStyle{Text("test")},
+			[]Markdown{Text("test")},
 			"1. test",
 		},
 		{
 			"OrderedList multiple items",
-			[]InlineStyle{Text("test"), Text("test2")},
+			[]Markdown{Text("test"), Text("test2")},
 			"1. test\n2. test2",
 		},
 	}

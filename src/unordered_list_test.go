@@ -5,19 +5,19 @@ import "testing"
 func TestUnorderedList_Markdown(t *testing.T) {
 	tests := []struct {
 		name  string
-		lines []InlineStyle
+		lines []Markdown
 		want  string
 	}{
 		{
 			"UnorderedList single item",
-			[]InlineStyle{
+			[]Markdown{
 				Text("test"),
 			},
 			"* test",
 		},
 		{
 			"UnorderedList multiple items",
-			[]InlineStyle{
+			[]Markdown{
 				Text("test"),
 				Text("test2"),
 			},
