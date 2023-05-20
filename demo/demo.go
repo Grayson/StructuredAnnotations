@@ -43,7 +43,7 @@ We're going to populate the following list:
 
 {{.list}}
 
-It shoudl update dynamically as you watch!
+It should update dynamically as you watch!
 `)
 	a.Add(t)
 
