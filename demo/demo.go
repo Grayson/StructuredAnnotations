@@ -34,6 +34,8 @@ func basicStructuredCode() {
 }
 
 func templateWithSwappable() {
+	const delay = 5 * time.Second
+
 	a := sa.NewAnnotation(sa.WithStyle(sa.Warning), sa.WithUniqueContext())
 
 	t, _ := sa.NewTemplate(`
@@ -55,22 +57,30 @@ It should update dynamically as you watch!
 		sa.Text("Last item"),
 	)
 	t.Add("list", list)
+	fmt.Printf("Initial:\n%v\n\n***\n\n", a.Markdown())
 
-	<-time.NewTimer(3 * time.Second).C
-	swap.Swap(sa.Text("Swapped for text!"))
+	update := func(s string) {
+		<-time.NewTimer(delay).C
+		if len(s) == 0 {
+			swap.Delete()
+		} else {
+			swap.Swap(sa.Text(s))
+		}
+		err := a.Send()
+		fmt.Printf("New markdown:\n***\n%v\n", a.Markdown())
+		fmt.Printf("error: %v\n", err)
+	}
+	update("Swapped text!")
+	update("")
+	update("This was deleted and restored!")
+
+	<-time.NewTimer(delay).C
+	list.Add(&sa.Link{
+		Text:        sa.Text("Added a link!"),
+		Destination: "https://github.com/Grayson/StructuredAnnotations",
+	})
 	err := a.Send()
-	fmt.Printf("error: %v\n", err)
-
-	<-time.NewTimer(3 * time.Second).C
-	swap.Delete()
-	err = a.Send()
-	fmt.Printf("error: %v\n", err)
-
-	<-time.NewTimer(3 * time.Second).C
-	swap.Swap(sa.Text("This was deleted and restored!"))
-
-	fmt.Println(a.Markdown())
-	err = a.Send()
+	fmt.Printf("Final markdown:\n***\n%v\n", a.Markdown())
 	fmt.Printf("error: %v\n", err)
 }
 
