@@ -3,22 +3,22 @@ package structuredannotations
 type AnnotationStyle int
 
 const (
-	Default AnnotationStyle = iota
+	Info AnnotationStyle = iota
 	Error
 	Warning
-	Info
+	Success
 )
 
 func (a AnnotationStyle) String() string {
 	switch a {
-	case Default:
-		return "default"
+	case Info:
+		return "info"
 	case Error:
 		return "error"
 	case Warning:
 		return "warning"
-	case Info:
-		return "info"
+	case Success:
+		return "success"
 	}
 	panic("Unexpected AnnotationStyle")
 }
