@@ -17,7 +17,7 @@ workflows:
         inputs:
         - content: |-
             #!/usr/bin/env bash
-            # go run demo/demo.go
+            go run demo/demo.go
 
             export EXAMPLE_ENV_VAR="This is set by an environment variable."
             go run cmd/cmd.go argvar="This is from an argument variable." <<-EOF
