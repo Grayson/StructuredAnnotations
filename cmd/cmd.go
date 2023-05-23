@@ -33,7 +33,7 @@ func main() {
 		template.Add(tmp[0], sa.Text(tmp[1]))
 	}
 
-	a := sa.NewAnnotation(sa.WithStyle(sa.Default))
+	a := sa.NewAnnotation(sa.WithStyle(sa.Info))
 	a.Add(template)
 	fmt.Println(a.Markdown())
 	err = a.Send()
